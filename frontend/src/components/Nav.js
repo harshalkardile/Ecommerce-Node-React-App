@@ -22,6 +22,9 @@ const nav = () => {
         <li>
             <Link to= "/profile">Profile</Link>
         </li>
+        <li>
+            <Link to= "/signup">Sign up</Link>
+        </li>
 
         </ul>
     </div>
