@@ -93,26 +93,47 @@
 
 .product-list {
   text-align: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  
 }
 
 .product-list ul li {
   display: inline-block;
   width: 150px;
   border: 1px solid skyblue;
-  padding: 5px;
+  
+  padding: 3px 5px;
+  font-size: 15px;
 }
 
 .product-list ul{
   margin: 0;
 }
 
+.button {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  margin-left: 2px;
+  padding: 3px 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: darkblue;
+}
 .search-product-box {
+ 
+justify-content: center;
+  position: absolute;
   width: 400px;
   margin: 20px;
   height: 38px;
   padding-left: 30px;
   border: solid 1px skyblue;
+  
 }
 
 @keyframes App-logo-spin {

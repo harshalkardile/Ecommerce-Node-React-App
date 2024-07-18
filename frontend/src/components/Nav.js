@@ -35,6 +35,7 @@ const Nav = () => {
                 </li>
             </ul>:
             <ul className="nav-ul nav-right">
+                <li> <Link to= "/shop">Shop</Link></li>
                 <li> <Link to="/signup">Sign up</Link> </li> 
                 <li><Link to="/login">Login</Link></li>
             </ul>
