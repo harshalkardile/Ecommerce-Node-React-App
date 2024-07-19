@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Orders.css";
+import { baseurl } from "./baseURL";
 
 const ProductList = () => {
   const [orders, setOrders] = useState([]);
@@ -21,14 +22,14 @@ const ProductList = () => {
   const isItemsVisible = (orderId) => visibleItems[orderId] || false;
 
   const getOrders = async () => {
-    let result = await fetch("http://localhost:5000/orders");
+    let result = await fetch(`${baseurl}/orders`);
     result = await result.json();
     setOrders(result);
   };
 
   const deleteOrder = async (id) => {
     console.warn(id);
-    let result = await fetch(`http://localhost:5000/order/${id}`, {
+    let result = await fetch(`${baseurl}/order/${id}`, {
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },

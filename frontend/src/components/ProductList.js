@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseurl } from "./baseURL";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -10,14 +11,14 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/products");
+    let result = await fetch(`${baseurl}/products`);
     result = await result.json();
     setProducts(result);
   };
 
   const deleteProduct = async (id) => {
     console.warn(id);
-    let result = await fetch(`http://localhost:5000/product/${id}`, {
+    let result = await fetch(`${baseurl}/product/${id}`, {
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
@@ -36,7 +37,7 @@ const ProductList = () => {
   const searchHandle = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`, {
+      let result = await fetch(`${baseurl}/search/${key}`, {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },

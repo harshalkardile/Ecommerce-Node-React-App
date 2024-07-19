@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { useStateValue } from "../StateProvider";
+import { baseurl } from "./baseURL";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/products");
+    let result = await fetch(`${baseurl}/products`);
     result = await result.json();
     setProducts(result);
   };
@@ -18,7 +19,7 @@ const ProductList = () => {
   const searchHandle = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`);
+      let result = await fetch(`${baseurl}/search/${key}`);
       result = await result.json();
       if (result) {
         setProducts(result);

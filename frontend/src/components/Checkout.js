@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import "./Checkout.css";
+import { baseurl } from "./baseURL";
 
 const Checkout = () => {
   const [{ basket }, dispatch] = useStateValue();
@@ -64,7 +65,7 @@ const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/orders", {
+      const response = await fetch(`${baseurl}/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

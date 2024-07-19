@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseurl } from "./baseURL";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ const SignUp = () => {
 
     // If validation passes, proceed with the API call
     try {
-      let result = await fetch("http://localhost:5000/register", {
+      let result = await fetch(`${baseurl}/register`, {
         method: "POST",
         body: JSON.stringify({ name, email, password }),
         headers: {

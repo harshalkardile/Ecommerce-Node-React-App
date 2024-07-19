@@ -1,0 +1,1 @@
+export const baseurl = `https://ecommerce-node-react-app.onrender.com`;
