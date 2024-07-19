@@ -5,12 +5,11 @@ import { getBasketTotal } from '../reducer';
 import './Checkout.css';
 
 const Checkout = () => {
-    // Accessing basket from context
+   
     const [{basket}, dispatch] = useStateValue();
 
-     // Initialize orderData state with a default structure
      const [orderData, setOrderData] = useState({
-        items: [], // Initially empty, will be filled based on basket
+        items: [], 
         name: '',
         email: '',
         address: '',
@@ -18,8 +17,7 @@ const Checkout = () => {
         total: ''
     });
 
-    // Effect to update orderData.items whenever basket changes
-    useEffect(() => {
+       useEffect(() => {
         const totalAmount = getBasketTotal(basket);
     
         setOrderData(prevState => ({
@@ -27,14 +25,18 @@ const Checkout = () => {
             items: basket.map(item => ({
                 id: item.id,
                 name: item.name,
-                desc: item.desc || '', // Provide default value if desc is not stored in basket
+                desc: item.desc || '', 
                 price: item.price,
-                category: item.category || '' // Provide default value if category is not stored in basket
+                category: item.category || ''
             })),
             totalproducts: basket?.length,
             total: totalAmount
         }));
-    }, [basket]); // Dependency array ensures this effect runs only when basket changes
+    }, [basket]); 
+    const handleRemove = (itemId) => ({
+        type: 'REMOVE_FROM_BASKET',
+        payload: itemId
+      });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -75,7 +77,7 @@ const Checkout = () => {
                 type: 'CLEAR_BASKET'
             });
         } catch (error) {
-            console.error('Error:', error.message); // Handle errors
+            console.error('Error:', error.message); 
         }
     };
     const total = getBasketTotal(orderData.items);
@@ -85,30 +87,31 @@ const Checkout = () => {
         <form onSubmit={handleSubmit}>
             <h2 class="order-heading">Order</h2>
             <div className="form-cart-container">
-        <div className="form-container">
-            <div className="checkout-form__container">
-                <div className="checkout-form__card">
-                    <div className="checkout-form__fields">
-                        <div className="checkout-form__field">
-                            <label htmlFor="name" className="checkout-form__label">Name:</label>
-                            <input type="text" name="name" onChange={handleChange} placeholder="Name" className="checkout-form__input" required />
-                        </div>
-                        <div className="checkout-form__field">
-                            <label htmlFor="email" className="checkout-form__label">Email:</label>
-                            <input type="email" name="email" onChange={handleChange} placeholder="Email" className="checkout-form__input" required />
-                        </div>
-                        <div className="checkout-form__field">
-                            <label htmlFor="address" className="checkout-form__label">Address:</label>
-                            <input type="text" name="address" onChange={handleChange} placeholder="Address" className="checkout-form__input" required />
-                        </div>
-                        <div className="checkout-form__field">
-                            <label htmlFor="phone" className="checkout-form__label">Phone:</label>
-                            <input type="tel" name="phone" onChange={handleChange} placeholder="Phone" className="checkout-form__input" required />
+            <div className="form-container">
+                <div className="checkout-form__container">
+                    <div className="checkout-form__card">
+                        <h3>Shipping details</h3>
+                        <div className="checkout-form__fields">
+                            <div className="checkout-form__field">
+                                <label htmlFor="name" className="checkout-form__label">Name:</label>
+                                <input type="text" name="name" onChange={handleChange} placeholder="Name" className="checkout-form__input" required />
+                            </div>
+                            <div className="checkout-form__field">
+                                <label htmlFor="email" className="checkout-form__label">Email:</label>
+                                <input type="email" name="email" onChange={handleChange} placeholder="Email" className="checkout-form__input" required />
+                            </div>
+                            <div className="checkout-form__field">
+                                <label htmlFor="address" className="checkout-form__label">Address:</label>
+                                <input type="text" name="address" onChange={handleChange} placeholder="Address" className="checkout-form__input" required />
+                            </div>
+                            <div className="checkout-form__field">
+                                <label htmlFor="phone" className="checkout-form__label">Phone:</label>
+                                <input type="tel" name="phone" onChange={handleChange} placeholder="Phone" className="checkout-form__input" required />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <div class="cart-container">
             <h2 class="order-heading">Cart</h2>
             {basket.map((item, index) => (
@@ -133,6 +136,9 @@ const Checkout = () => {
                     <div className="cart-item-details">
                         <label htmlFor={`items-${index}-category`} className="cart-item-label">Category:</label>
                         <input type="text" name={`items-${index}-category`} value={item.category} readOnly className="cart-item-input" />
+                    </div>
+                    <div className="cart-item-actions">
+                        <button onClick={() => handleRemove(item.id)} className="remove-button">Remove</button>
                     </div>
                 </fieldset>
             ))}

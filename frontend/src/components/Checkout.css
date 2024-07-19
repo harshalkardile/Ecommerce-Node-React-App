@@ -164,3 +164,18 @@ h2.order-heading {
     background-color: #f1f1f1; /* Light background color */
     text-align: right;
 }
+
+.remove-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-button:hover {
+    background-color: #c0392b;
+  }

@@ -16,6 +16,18 @@ export const getBasketTotal = (Basket) =>
 const reducer = (state, action) => {
     console.log(action)
     switch(action.type) {
+        case 'CLEAR_BASKET':
+            return {
+              ...state,
+              basket: [] // Clears the basket
+            };
+
+        case 'REMOVE_FROM_BASKET':
+            return {
+                ...state,
+                basket: state.basket.filter(item => item.id !== action.payload)
+            };
+
         case "ADD_TO_BASKET":
             return {
                 ...state,
