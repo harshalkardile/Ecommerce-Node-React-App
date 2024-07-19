@@ -1,149 +1,149 @@
 .order-grid-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
 }
 
 .order-list-title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .order-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .order-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .order-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .info-item {
-    font-weight: 300;
-    font-size: 15px;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
+  font-weight: 300;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
 }
 
 .info-item-label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .info-item-value {
-    font-weight: 300; /* Thinner font for data values */
+  font-weight: 300; /* Thinner font for data values */
 }
 
 .total-price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-    margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 10px;
 }
 
 .expand-button,
 .delete-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    font-size: 16px;
-    width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
+  width: 100%;
 }
 
 .delete-button {
-    background-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .expand-button:hover,
 .delete-button:hover {
-    filter: brightness(110%);
+  filter: brightness(110%);
 }
 
 .expand-button:active,
 .delete-button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .order-items {
-    display: none;
-    margin-top: 10px;
+  display: none;
+  margin-top: 10px;
 }
 
 .order-items.visible {
-    display: block;
+  display: block;
 }
 
 .items-header,
 .item-details {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
-    gap: 10px;
-    padding: 8px;
-    font-size: 14px;
-    list-style-type: none;
-    margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 8px;
+  font-size: 14px;
+  list-style-type: none;
+  margin: 0;
 }
 
 .items-header {
-    font-weight: bold;
-    background-color: #ececec;
-    border-radius: 4px 4px 0 0;
+  font-weight: bold;
+  background-color: #ececec;
+  border-radius: 4px 4px 0 0;
 }
 
 .item-details {
-    border-top: 1px solid #ddd;
-    background-color: #fff;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .item-data {
-    padding: 4px;
-    text-align: left;
-    font-weight: 300; /* Thinner font for item data */
+  padding: 4px;
+  text-align: left;
+  font-weight: 300; /* Thinner font for item data */
 }
 
 .item-desc {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .no-results {
-    text-align: center;
-    color: #888;
-    font-size: 20px;
-    grid-column: 1 / -1;
+  text-align: center;
+  color: #888;
+  font-size: 20px;
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 768px) {
-    .items-header,
-    .item-details {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .item-data:nth-child(3),
-    .item-data:nth-child(4) {
-        display: none;
-    }
+  .items-header,
+  .item-details {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .item-data:nth-child(3),
+  .item-data:nth-child(4) {
+    display: none;
+  }
 }
