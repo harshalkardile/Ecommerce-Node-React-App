@@ -1,4 +1,319 @@
 
+
+
+.product-list-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-list-title {
+  font-size: 20px; 
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.product-search-box {
+  width: 100%;
+  max-width: 300px; 
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px; 
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-list-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px; 
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px; 
+}
+
+.header-item {
+  text-align: center;
+  font-weight: bold;
+  padding: 8px; 
+}
+
+.product-list-item {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  padding: 8px; 
+  border-bottom: 1px solid #ddd;
+}
+
+.product-list-item:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.product-list-item:nth-child(odd) {
+  background-color: #fff;
+}
+
+.item-data {
+  text-align: center;
+  padding: 8px; 
+  font-size: 14px; 
+}
+
+.item-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Reduced gap */
+}
+
+.action-button {
+  padding: 4px 8px; /* Reduced padding */
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px; /* Reduced font size */
+  transition: background-color 0.3s ease;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.update-button {
+  background-color: #007bff;
+}
+
+.update-button:hover {
+  background-color: #0056b3;
+}
+
+.no-results {
+  text-align: center;
+  color: #999;
+  font-size: 16px; /* Reduced font size */
+}
+
+
+.product-form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+.form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: medium;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  background-color: #f1f1f1;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5; 
+  padding: 20px;
+}
+
+
+.login-title {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+
+.login-form {
+  width: 100%;
+  max-width: 400px; 
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 1em;
+  color: #333;
+  box-sizing: border-box; 
+}
+
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+
+.submit-button {
+  background-color: #007bff;
+  color: #fff; 
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:active {
+  background-color: #004494; 
+  transform: scale(0.98); 
+}
+
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5; 
+}
+
+
+.registration-title {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700; 
+}
+
+
+.registration-form {
+  width: 100%;
+  max-width: 400px; 
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  font-size: 1em;
+  color: #333;
+  box-sizing: border-box; 
+}
+
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+
+.submit-button {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3; 
+}
+
+.submit-button:active {
+  background-color: #004494; 
+  transform: scale(0.98); 
+}
+
 .nav-ul {
   padding: 5px;
   margin: 0px;
@@ -14,7 +329,7 @@
   padding: 5px;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: skyblue;
   width: 100%;
@@ -125,16 +440,30 @@
   background-color: darkblue;
 }
 .search-product-box {
- 
-justify-content: center;
-  position: absolute;
   width: 400px;
   margin: 20px;
   height: 38px;
   padding-left: 30px;
   border: solid 1px skyblue;
-  
 }
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 20px; 
+  justify-content: center; 
+}
+
+/* .search-product-shop {
+  justify-content: center;
+    position: absolute;
+    width: 400px;
+    margin: 20px;
+    height: 38px;
+    padding-left: 30px;
+    border: solid 1px skyblue;
+    
+  } */
 
 @keyframes App-logo-spin {
   from {

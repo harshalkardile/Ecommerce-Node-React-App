@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
@@ -51,40 +52,41 @@ const ProductList = () => {
     }
 
     return (
-        <div className="product-list">
-            <h3>Product List</h3>
-            <input type="" className='search-product-box' placeholder='Search Product'
-            onChange={searchHandle}
-             />
-            <ul className='header'>
-                <li>S. No.</li>
-                <li>Name</li>
-                <li>Description</li>
-                <li>Stock</li>
-                <li>Price</li>
-                <li>Category</li>
-                <li>Operation</li>
+        <div className="product-list-container">
+        <h3 className="product-list-title">Product List</h3>
+        <input 
+            type="text" 
+            className="product-search-box" 
+            placeholder="Search Product"
+            onChange={searchHandle} 
+        />
+        <ul className="product-list-header">
+            <li className="header-item">S. No.</li>
+            <li className="header-item">Name</li>
+            <li className="header-item">Description</li>
+            <li className="header-item">Stock</li>
+            <li className="header-item">Price</li>
+            <li className="header-item">Category</li>
+            <li className="header-item">Operation</li>
+        </ul>
+        {
+            products.length > 0 ? products.map((item, index) => (
+                <ul className="product-list-item" key={item._id}>
+                    <li className="item-data">{index + 1}</li>
+                    <li className="item-data">{item.name}</li>
+                    <li className="item-data item-desc">{item.desc}</li>
+                    <li className="item-data">{item.stock}</li>
+                    <li className="item-data">{item.price}</li>
+                    <li className="item-data">{item.category}</li>
+                    <li className="item-actions">
+                        <button className="action-button delete-button" onClick={() => deleteProduct(item._id)}>Delete</button>
+                        <button className="action-button delete-button" onClick={() => updateProduct(item._id)}>Update</button>
+                    </li>
+                </ul>
+            )) : <h1 className="no-results">No Results Found</h1>
+        }
+    </div>
 
-            </ul>
-            {
-                products.length>0 ? products.map((item, index) =>
-                    <ul key={item._id}>
-                        <li>{index + 1}</li>
-                        <li>{item.name}</li>
-                        <li className='desc'>{item.desc}</li>
-                        <li>{item.stock}</li>
-                        <li>{item.price}</li>
-                        <li>{item.category}</li>
-                        <li>
-                            <button className='button' onClick={() => deleteProduct(item._id)}>Delete</button>
-                            <button className='button' onClick={() => updateProduct(item._id)}>Update</button>
-                        </li>
-
-                    </ul>
-                )
-                :<h1>No Result Found</h1>
-            }
-        </div>
     )
 }
 

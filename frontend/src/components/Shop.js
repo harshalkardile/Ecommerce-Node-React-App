@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard'; 
+import { useStateValue } from '../StateProvider';
+
 const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [state, dispatch] = useStateValue();
+   
 
     useEffect(() => {
         getProducts();
@@ -27,16 +31,13 @@ const ProductList = () => {
         }
         
     }
-
-    const addToCart = (productId) => {
-        console.log(`Adding ${productId} to cart.`);
-        // Implement actual cart logic here
-      };
     
+
       return (
         <div className="product-list">
-          <h3>Product List</h3>
+          <h3>Products</h3>
           <input type="text" className='search-product-box' placeholder='Search Product'onChange={searchHandle} /> 
+          <div className="cards-container">
           {
             products.length > 0 ? products.map((item) =>
               <ProductCard
@@ -47,10 +48,11 @@ const ProductList = () => {
                 stock={item.stock}
                 price={item.price}
                 category={item.category}
-                addToCart={addToCart}
+                
               />
             ) : <h1>No Results Found</h1>
           }
+          </div>
         </div>
       );
     }

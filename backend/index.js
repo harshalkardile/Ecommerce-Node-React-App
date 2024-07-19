@@ -4,7 +4,7 @@ const cors =require("cors");
 const User = require('./db/User');
 const Product = require('./db/Product');
 const { accessSync } = require('fs');
-
+const Order = require('./db/Order');
 const app = express();
 const Jwt = require("jsonwebtoken");
 const jwtKey= 'e-comm'
@@ -86,7 +86,7 @@ app.put("/product/:id", verfyToken, async(req, resp)=>{
 
 });
 
-app.get("/search/:key",   async (req, resp) => {
+app.get("/search/:key", async (req, resp) => {
     try {
         let result = await Product.find({
             "$or": [
@@ -100,7 +100,47 @@ app.get("/search/:key",   async (req, resp) => {
         console.error(error);
         resp.status(500).send({ message: "An error occurred", error: error.message });
     }
+}); 
+
+// API Endpoint to create a new order
+app.post('/orders', async (req, res) => {
+    try {
+        const order = await new Order(req.body);
+        await order.save();
+        res.status(201).send(order);
+    } catch (error) {
+        console.error(error);
+        res.status(400).send({ message: 'Error creating order', error });
+    }
 });
+
+app.get('/orders', async (req, res) => {
+    try {
+        const orders = await Order.find();
+        res.status(200).send(orders);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Error fetching orders', error });
+    }
+});
+
+app.delete('/order/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        
+        const deletedOrder = await Order.findByIdAndDelete(id);
+        
+        if (!deletedOrder) {
+            return res.status(404).send({ message: 'Order not found' });
+        }
+        
+        res.status(200).send({ message: 'Order deleted successfully', deletedOrder });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Error deleting order', error });
+    }
+});
+
 
 function verfyToken(req, resp, next){
     const bearerHeader = req.headers['authorization'];

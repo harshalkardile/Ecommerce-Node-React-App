@@ -6,7 +6,7 @@ const AddProduct = () => {
     const [stock, setStock] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [category, setCategory] = React.useState('');
-    const [company, setCompnay] = React.useState('');
+    const [company, setCompany] = React.useState('');
     const [error, setError] = React.useState(false);
 
     const addProduct = async () => {
@@ -32,41 +32,77 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='product'>
-            <h1>Add Product</h1>
-            <input type="text" placeholder='Enter product name' className='inputBox'
-                value={name} onChange={(e) => { setName(e.target.value) }}
+        <div className="product-form-container">
+        <h1 className="form-title">Add Product</h1>
+        <form className="product-form" onSubmit={addProduct}>
+            <input 
+                className="form-input" 
+                type="text" 
+                placeholder="Enter Product Name" 
+                value={name} 
+                onChange={(e) => setName(e.target.value)}
+                required 
             />
-            {error && !name && <span className='invalid-input'>Enter valid name</span>}
+            {error && !name && <span className="error-message">Enter valid name</span>}
 
-            <input type="text" placeholder='Enter product description' className='inputBox'
-                value={desc} onChange={(e) => { setDesc(e.target.value) }}
+            <input 
+                className="form-input" 
+                type="text" 
+                placeholder="Enter Product Description" 
+                value={desc} 
+                onChange={(e) => setDesc(e.target.value)}
+                required 
             />
-            {error && !desc && <span className='invalid-input'>Enter valid description</span>}
+            {error && !desc && <span className="error-message">Enter valid description</span>}
 
-            <input type="text" placeholder='Enter product stock' className='inputBox'
-                value={stock} onChange={(e) => { setStock(e.target.value) }}
+            <input 
+                className="form-input" 
+                type="number" 
+                placeholder="Enter Product Stock" 
+                value={stock} 
+                onChange={(e) => setStock(e.target.value)}
+                required 
             />
-            {error && !stock && <span className='invalid-input'>Enter valid stock</span>}
+            {error && !stock && <span className="error-message">Enter valid stock</span>}
 
-            <input type="text" placeholder='Enter product price' className='inputBox'
-                value={price} onChange={(e) => { setPrice(e.target.value) }}
+            <input 
+                className="form-input" 
+                type="number" 
+                placeholder="Enter Product Price" 
+                value={price} 
+                onChange={(e) => setPrice(e.target.value)}
+                required 
             />
-            {error && !price && <span className='invalid-input'>Enter valid price</span>}
+            {error && !price && <span className="error-message">Enter valid price</span>}
 
-            <input type="text" placeholder='Enter product category' className='inputBox'
-                value={category} onChange={(e) => { setCategory(e.target.value) }}
+            <input 
+                className="form-input" 
+                type="text" 
+                placeholder="Enter Product Category" 
+                value={category} 
+                onChange={(e) => setCategory(e.target.value)}
+                required 
             />
-            {error && !category && <span className='invalid-input'>Enter valid category</span>} 
+            {error && !category && <span className="error-message">Enter valid category</span>}
 
-            <input type="text" placeholder='Enter product company' className='inputBox'
-                value={company} onChange={(e) => { setCompnay(e.target.value) }}
+            <input 
+                className="form-input" 
+                type="text" 
+                placeholder="Enter Product Company" 
+                value={company} 
+                onChange={(e) => setCompany(e.target.value)}
+                required 
             />
-            {error && !company && <span className='invalid-input'>Enter valid company</span>}
+            {error && !company && <span className="error-message">Enter valid company</span>}
 
-
-            <button onClick={addProduct} className='appButton'>Add Product</button>
-        </div>
+            <button 
+                type="submit" 
+                className="submit-button"
+            >
+                Add Product
+            </button>
+        </form>
+    </div>
     )
 }
 
