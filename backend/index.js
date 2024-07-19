@@ -1,4 +1,5 @@
 require("./db/config");
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const User = require("./db/User");
@@ -157,4 +158,4 @@ function verfyToken(req, resp, next) {
   }
 }
 
-app.listen(5000);
+app.listen(process.env.PORT);
