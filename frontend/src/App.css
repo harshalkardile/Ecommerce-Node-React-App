@@ -434,6 +434,8 @@
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-left: 30px;
+  margin-bottom: 40px;
   gap: 20px;
   justify-content: center;
 }

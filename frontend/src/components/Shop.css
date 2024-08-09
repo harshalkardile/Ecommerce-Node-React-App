@@ -1,0 +1,58 @@
+.product-list {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  text-align: center; /* Center the content */
+}
+
+.product-list h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative;
+  margin: 0 auto 20px auto; /* Center the search box */
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  padding-right: 40px; /* Make room for the icon */
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  pointer-events: none; /* Ensures the icon doesn't interfere with input */
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 20px;
+}
+
+.no-results {
+  text-align: center;
+  color: #999;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}

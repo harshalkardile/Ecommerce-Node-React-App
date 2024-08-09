@@ -3,34 +3,57 @@ import "./ProductCard.css";
 import "../App.css";
 import { useStateValue } from "../StateProvider";
 
-function ProductCard({ id, name, desc, stock, price, category }) {
+function ProductCard({ id, name, desc, stock, price, category, image }) {
   const [{ basket }, dispatch] = useStateValue();
 
   console.log("this is the bascke>>>>>", basket);
 
   const addToBasket = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
-        id: id,
-        name: name,
-        desc: desc,
-        price: price,
-        category: category,
-      },
-    });
+    if (stock > 0) {
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: {
+          id: id,
+          name: name,
+          desc: desc,
+          price: price,
+          category: category
+        },
+      });
+    }
   };
+
+  const dummyImage =
+    "https://via.placeholder.com/300x300.png?text=Product+Image";
   return (
-    <div className="card">
-      <h3 className="product-name">{name}</h3>
-      <p className="product-desc">{desc}</p>
-      <p className="product-price">₹{price}</p>
-      <p className="product-category">Category: {category}</p>
-      <button className="add-to-cart-btn" onClick={() => addToBasket(id)}>
-        Add to Cart
+      <div className="product-card">
+      <div className="product-image-container">
+        <img src={image || dummyImage} alt={name} className="product-image" />
+        <span className="product-category">{category}</span>
+      </div>
+      <div className="product-details">
+        <h2 className="product-name">{name}</h2>
+        <p className="product-description">{desc}</p>
+        <div className="product-info">
+          <span className="product-price">₹{price}</span>
+          <span
+            className={`product-stock ${
+              stock > 0 ? "in-stock" : "out-of-stock"
+            }`}
+          >
+            {stock > 0 ? "In Stock" : "Out of Stock"}
+          </span>
+        </div>
+      </div>
+      <button
+        className={`add-to-cart-btn ${stock === 0 ? 'unavailable' : ''}`}
+        onClick={addToBasket}
+        disabled={stock === 0}
+      >
+        {stock > 0 ? "Add to Cart" : "Unavailable"}
       </button>
     </div>
   );
-}
+};
 
 export default ProductCard;

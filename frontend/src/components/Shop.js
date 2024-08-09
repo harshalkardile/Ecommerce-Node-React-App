@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { useStateValue } from "../StateProvider";
 import { baseurl } from "./baseURL";
+import { Search } from "lucide-react"; // Make sure to install lucide-react
+import "./Shop.css"; 
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -32,12 +34,15 @@ const ProductList = () => {
   return (
     <div className="product-list">
       <h3>Products</h3>
-      <input
-        type="text"
-        className="search-product-box"
-        placeholder="Search Product"
-        onChange={searchHandle}
-      />
+      <div className="search-box">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search Product"
+          onChange={searchHandle}
+        />
+        <Search className="search-icon" size={20} />
+      </div>
       <div className="cards-container">
         {products.length > 0 ? (
           products.map((item) => (
@@ -49,6 +54,7 @@ const ProductList = () => {
               stock={item.stock}
               price={item.price}
               category={item.category}
+              image={item.image}
             />
           ))
         ) : (
