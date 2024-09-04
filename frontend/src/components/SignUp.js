@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { baseurl } from "./baseURL";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,10 +16,10 @@ const SignUp = () => {
       navigate("/");
     }
   }, []);
-  const collectData = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
 
-    // Custom validation
+  const collectData = async (e) => {
+    e.preventDefault();
+
     if (!name.trim()) {
       alert("Name is required");
       return;
@@ -33,7 +35,8 @@ const SignUp = () => {
       return;
     }
 
-    // If validation passes, proceed with the API call
+    setIsLoading(true);
+
     try {
       let result = await fetch(`${baseurl}/register`, {
         method: "POST",
@@ -46,15 +49,15 @@ const SignUp = () => {
       result = await result.json();
       console.warn(result);
 
-      // Save user data and token to localStorage
       localStorage.setItem("user", JSON.stringify(result.result));
       localStorage.setItem("token", JSON.stringify(result.auth));
 
-      // Navigate to the home page
       navigate("/");
     } catch (error) {
       console.error("Error during registration:", error);
       alert("An error occurred during registration. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,13 +89,28 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button
-          className="submit-button"
-          type="submit" /* Ensure button type is submit */
-        >
-          Sign Up
+        <button className="submit-button" type="submit" disabled={isLoading}>
+          {isLoading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>
+      {isLoading && (
+        <div className="loader-container">
+          <ClipLoader color={"#123abc"} loading={isLoading} size={50} />
+        </div>
+      )}
+      <style jsx>{`
+        .loader-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      `}</style>
     </div>
   );
 };

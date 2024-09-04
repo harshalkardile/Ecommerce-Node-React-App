@@ -1,3 +1,11 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* or center */
+  min-height: 50px;
+  padding-top: 20px;
+}
+
 .order-grid-container {
   width: 100%;
   max-width: 1200px;

@@ -1,39 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { baseurl } from "./baseURL";
-const AddProduct = () => {
-  const [name, setName] = React.useState("");
-  const [desc, setDesc] = React.useState("");
-  const [stock, setStock] = React.useState("");
-  const [price, setPrice] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [company, setCompany] = React.useState("");
-  const [error, setError] = React.useState(false);
 
-  const addProduct = async () => {
+const AddProduct = () => {
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [stock, setStock] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [company, setCompany] = useState("");
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const addProduct = async (e) => {
+    e.preventDefault();
     if (!name || !desc || !stock || !price || !company || !category) {
       setError(true);
       return false;
     }
 
-    const userId = JSON.parse(localStorage.getItem("user"))._id;
-    let result = await fetch(`${baseurl}/add-product`, {
-      method: "post",
-      body: JSON.stringify({
-        name,
-        desc,
-        stock,
-        price,
-        category,
-        company,
-        userId,
-      }),
-      headers: {
-        "Content-type": "application/json",
-        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-      },
-    });
-    result = await result.json();
-    console.warn(result);
+    setIsLoading(true);
+    setError(false);
+
+    try {
+      const userId = JSON.parse(localStorage.getItem("user"))._id;
+      let result = await fetch(`${baseurl}/add-product`, {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          desc,
+          stock,
+          price,
+          category,
+          company,
+          userId,
+        }),
+        headers: {
+          "Content-type": "application/json",
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      });
+      result = await result.json();
+      console.warn(result);
+
+      if (result) {
+        toast.success("Product added successfully");
+        navigate("/"); // Redirect to product list or dashboard
+      } else {
+        toast.error("Failed to add product");
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      toast.error("An error occurred while adding the product");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -112,10 +137,29 @@ const AddProduct = () => {
           <span className="error-message">Enter valid company</span>
         )}
 
-        <button type="submit" className="submit-button">
-          Add Product
+        <button type="submit" className="submit-button" disabled={isLoading}>
+          {isLoading ? "Adding Product..." : "Add Product"}
         </button>
       </form>
+      {isLoading && (
+        <div className="loader-container">
+          <ClipLoader color={"#123abc"} loading={isLoading} size={50} />
+        </div>
+      )}
+      <ToastContainer />
+      <style jsx>{`
+        .loader-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      `}</style>
     </div>
   );
 };
