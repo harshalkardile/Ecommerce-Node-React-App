@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import "react-toastify/dist/ReactToastify.css";
 import { baseurl } from "./baseURL";
+import "./ProductList.css"; // Import the CSS
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -141,32 +142,6 @@ const ProductList = () => {
         <h1 className="no-results">No Results Found</h1>
       )}
       <ToastContainer className="custom-toast-container" />
-      <style jsx>{`
-        .loader-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 200px;
-        }
-
-        .custom-toast-container .Toastify__toast {
-          min-height: 30px;
-          font-size: 0.8rem;
-        }
-
-        .action-icon {
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-size: 1.2rem;
-          margin-right: 8px;
-          color: #007bff;
-        }
-
-        .action-icon.delete-icon {
-          color: #dc3545;
-        }
-      `}</style>
     </div>
   );
 };
