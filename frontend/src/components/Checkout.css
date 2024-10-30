@@ -1,3 +1,25 @@
+.section-heading {
+  font-size: 1.5rem; /* Large font size for prominence */
+  font-weight: 500; /* Bold weight for emphasis */
+  color: #1e293b; /* Dark color for contrast */
+  margin: 1.5rem 0; /* Space around the heading */
+  text-align: center; /* Center align for symmetry */
+ /* Uppercase for boldness */
+  letter-spacing: 1px; /* Spacing for readability */
+  position: relative; /* Positioning for effects */
+}
+
+.overall-container{
+  background-color: #f0f0f0;
+  margin-top: -25px;
+}
+/* Remove decorative line effect for both headings */
+.section-heading::after {
+  content: ""; /* No decorative line */
+  display: none; /* Hide the line */
+}
+
+
 .form-cart-container {
   display: flex;
   gap: 20px;
@@ -14,7 +36,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 20px;
 }
 
 .cart-item {
@@ -36,7 +58,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .cart-item-label {
@@ -64,19 +86,32 @@
 }
 
 h2.order-heading {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
+  padding-top: 25px;
+  font-size: 2.5rem; /* Large font size for prominence */
+  font-weight: 600; /* Bold weight for emphasis */
+  color: #1e293b; /* Dark color for contrast */
+  margin: 1.5rem 0; /* Space around the heading */
+  text-align: center; /* Center align for symmetry */
+  text-transform: uppercase; /* Uppercase for boldness */
+  letter-spacing: 1px; /* Spacing for readability */
+  position: relative; /* Positioning for effects */
 }
 
-.form-container {
-  flex: 1;
+.order-heading::after {
+  content: ""; /* Decorative line below the heading */
+  display: block;
+  width: 50%; /* Width of the line */
+  height: 4px; /* Height of the line */
+  background-color: #007bff; /* Accent color */
+  margin: 0.5rem auto; /* Centering the line */
+  border-radius: 2px; /* Rounded corners */
+  transition: width 0.3s ease; /* Smooth transition for hover */
 }
+
+.order-heading:hover::after {
+  width: 70%; /* Expand line on hover */
+}
+
 .checkout-form {
   display: flex;
   justify-content: center;
@@ -120,25 +155,26 @@ h2.order-heading {
 
 .checkout-form__label {
   font-weight: bold;
+  color: #333; /* Dark color for labels */
 }
 
-.checkout-form__input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
+.checkout-form__input,
+.cart-item-input,
+.order-summary__input,
+.checkout-form__textarea {
+  padding: 10px; /* Padding for comfort */
+  border: 2px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
 }
 
-.checkout-form__submit {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
+.checkout-form__input:focus,
+.cart-item-input:focus,
+.order-summary__input:focus,
+.checkout-form__textarea:focus {
+  outline: none; /* Remove default outline */
+  border-color: #007bff; /* Highlight border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Light shadow for focus */
 }
 
 .order-summary {
@@ -164,16 +200,30 @@ h2.order-heading {
 }
 
 .remove-button {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  margin-top: 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  background-color: #e74c3c; /* Red color for the remove button */
+  color: white; /* White text for contrast */
+  padding: 10px 15px; /* Padding for button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
 }
 
 .remove-button:hover {
-  background-color: #c0392b;
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.checkout-form__submit {
+  margin-bottom: 15px;
+  background-color: #28a745; /* Green color for submit button */
+  color: white; /* White text for contrast */
+  padding: 10px 15px; /* Padding for button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.checkout-form__submit:hover {
+  background-color: #218838; /* Darker green on hover */
 }

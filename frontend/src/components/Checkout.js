@@ -128,13 +128,14 @@ const Checkout = () => {
   return (
     <>
       <ToastContainer />
+      <div className="overall-container">
       <form onSubmit={handleSubmit}>
-        <h2 className="order-heading">Order</h2>
+      <h2 className="order-heading">Order</h2>
         <div className="form-cart-container">
           <div className="form-container">
             <div className="checkout-form__container">
               <div className="checkout-form__card">
-                <h3>Shipping details</h3>
+              <h3 className="section-heading">Shipping Details</h3>
                 <div className="checkout-form__fields">
                   <div className="checkout-form__field">
                     <label htmlFor="name" className="checkout-form__label">
@@ -189,7 +190,7 @@ const Checkout = () => {
             </div>
           </div>
           <div className="cart-container">
-            <h2 className="order-heading">Cart</h2>
+            <h2 className="section-heading">Cart</h2>
             {basket.map((item, index) => (
               <fieldset className="cart-item" key={item.id}>
                 {" "}
@@ -297,6 +298,7 @@ const Checkout = () => {
           </button>
         </div>
       </form>
+      </div>
     </>
   );
 };

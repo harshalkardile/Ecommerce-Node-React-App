@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { baseurl } from "./baseURL";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import "./Login.css"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,36 +60,33 @@ const Login = () => {
           value={email}
           required
         />
-        <input
-          type="password"
-          className="form-input"
-          placeholder="Enter Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
+        <div className="password-input-container">
+          <input
+            type={showPassword ? "text" : "password"} // Toggle input type based on state
+            className="form-input"
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? <FiEyeOff /> : <FiEye />} {/* Toggle icon */}
+          </button>
+        </div>
         <button className="submit-button" type="submit" disabled={isLoading}>
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
       {isLoading && (
-        <div className="loader-container">
+        <div className="loader-overlay">
           <ClipLoader color={"#123abc"} loading={isLoading} size={50} />
         </div>
       )}
-      <style jsx>{`
-        .loader-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-      `}</style>
     </div>
   );
 };
