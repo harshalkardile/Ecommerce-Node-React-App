@@ -106,9 +106,8 @@ const ProductList = () => {
                   </div>
                 </div>
                 <div
-                  className={`order-items ${
-                    isItemsVisible(order._id) ? "visible" : "hidden"
-                  }`}
+                  className={`order-items ${isItemsVisible(order._id) ? "visible" : "hidden"
+                    }`}
                 >
                   <ul className="items-header">
                     <li className="header-item">Item Name</li>

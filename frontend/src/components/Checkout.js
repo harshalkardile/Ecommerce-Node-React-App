@@ -38,12 +38,30 @@ const Checkout = () => {
   }, [basket]);
 
   const handleRemove = (itemId) => {
-    dispatch(removeFromBasket(itemId));
+    const item = basket.find((item) => item.id === itemId);
+
+    if (item.quantity > 1) {
+      // If quantity > 1, decrement the quantity by 1
+      dispatch({
+        type: "UPDATE_QUANTITY",
+        itemId: itemId,  // Item ID to update
+        quantity: -1,    // Decrease the quantity by 1
+      });
+    } else {
+      // If quantity is 1, remove the item completely
+      dispatch(removeFromBasket(itemId)); // Remove the item if quantity is 1
+    }
   };
 
   const removeFromBasket = (itemId) => ({
     type: "REMOVE_FROM_BASKET",
-    payload: itemId,
+    payload: itemId,  // Pass the item ID to remove the item
+  });
+
+
+  const updateQuantity = (itemId, quantity) => ({
+    type: "UPDATE_QUANTITY",
+    payload: { itemId, quantity },
   });
 
   const handleChange = (e) => {
@@ -194,13 +212,9 @@ const Checkout = () => {
               <h2 className="section-heading">Cart</h2>
               {basket.map((item, index) => (
                 <fieldset className="cart-item" key={item.id}>
-                  {/* Use item ID as key */}
                   <legend>{index + 1}</legend>
                   <div className="cart-item-details">
-                    <label
-                      htmlFor={`items-${index}-id`}
-                      className="cart-item-label"
-                    >
+                    <label htmlFor={`items-${index}-id`} className="cart-item-label">
                       ID:
                     </label>
                     <input
@@ -212,10 +226,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-details">
-                    <label
-                      htmlFor={`items-${index}-name`}
-                      className="cart-item-label"
-                    >
+                    <label htmlFor={`items-${index}-name`} className="cart-item-label">
                       Name:
                     </label>
                     <input
@@ -227,10 +238,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-details">
-                    <label
-                      htmlFor={`items-${index}-desc`}
-                      className="cart-item-label"
-                    >
+                    <label htmlFor={`items-${index}-desc`} className="cart-item-label">
                       Description:
                     </label>
                     <textarea
@@ -241,10 +249,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-details">
-                    <label
-                      htmlFor={`items-${index}-price`}
-                      className="cart-item-label"
-                    >
+                    <label htmlFor={`items-${index}-price`} className="cart-item-label">
                       Price:
                     </label>
                     <input
@@ -256,10 +261,7 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-details">
-                    <label
-                      htmlFor={`items-${index}-category`}
-                      className="cart-item-label"
-                    >
+                    <label htmlFor={`items-${index}-category`} className="cart-item-label">
                       Category:
                     </label>
                     <input
@@ -271,15 +273,17 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-actions">
-                  <button
-                    onClick={() => handleRemove(item.id)}
-                    className="remove-button"
-                  >
-                    <FaTrashAlt /> {/* This renders the trash icon */}
-                  </button>
+                    <p>Quantity: {item.quantity}</p>
+                    <button
+                      onClick={() => handleRemove(item.id)}  // Use item ID to remove
+                      className="remove-button"
+                    >
+                      <FaTrashAlt />
+                    </button>
                   </div>
                 </fieldset>
               ))}
+
             </div>
           </div>
 

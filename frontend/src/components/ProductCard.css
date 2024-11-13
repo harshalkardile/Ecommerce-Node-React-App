@@ -24,7 +24,8 @@
 .product-image-container {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
+  padding-top: 100%;
+  /* 1:1 Aspect Ratio */
 }
 
 .product-image {
@@ -127,12 +128,14 @@
 }
 
 .add-to-cart-btn.added {
-  background-color: #2e8b57; /* Color when added */
+  background-color: #2e8b57;
+  /* Color when added */
   color: white;
 }
 
 .add-to-cart-btn.unavailable {
-  background-color: #ccc; /* Color for unavailable */
+  background-color: #ccc;
+  /* Color for unavailable */
   color: #666;
   cursor: not-allowed;
 }

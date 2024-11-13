@@ -1,7 +1,8 @@
 /* Main container styles */
 .product-list {
   padding: 2rem;
-  background-color: #f0f0f0; /* Simple non-vibrant background color */
+  background-color: #f0f0f0;
+  /* Simple non-vibrant background color */
   min-height: 100vh;
 }
 
@@ -88,7 +89,8 @@
 /* Products grid */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  /* Responsive columns */
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -98,16 +100,26 @@
 
 /* Loading state */
 .loader-overlay {
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  position: fixed; /* Fixed position for full-screen overlay */
-  top: 0; /* Align to top */
-  left: 0; /* Align to left */
-  right: 0; /* Stretch to right */
-  bottom: 0; /* Stretch to bottom */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 1000; /* Ensure it's on top of other elements */
+  display: flex;
+  /* Use flexbox for centering */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  position: fixed;
+  /* Fixed position for full-screen overlay */
+  top: 0;
+  /* Align to top */
+  left: 0;
+  /* Align to left */
+  right: 0;
+  /* Stretch to right */
+  bottom: 0;
+  /* Stretch to bottom */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  z-index: 1000;
+  /* Ensure it's on top of other elements */
 }
 
 /* Empty state */
@@ -145,34 +157,51 @@
 }
 
 .product-list h3 {
-    font-size: 2.5rem; /* Keep original size for visibility */
-    font-weight: 600;
-    color: #1e293b; /* Dark color for contrast */
-    margin-bottom: 2rem;
-    text-align: center;
-    text-transform: uppercase; /* Uppercase for a bold look */
-    letter-spacing: 1px; /* Spacing between letters */
-    position: relative; /* Positioning for effects */
-  }
-  
-  .product-list h3::after {
-    content: ""; /* Adding a decorative line below the headline */
-    display: block;
-    width: 50%; /* Width of the line */
-    height: 4px; /* Height of the line */
-    background-color: #007bff; /* Accent color */
-    margin: 0.5rem auto; /* Centering the line */
-    border-radius: 2px; /* Rounded corners */
-    transition: width 0.3s ease; /* Smooth transition for hover */
-  }
-  
-  .product-list h3:hover::after {
-    width: 70%; /* Expand line on hover */
-  }
-  
-  .product-list h3 span {
-    display: block; /* Optional: Wrap in span for individual styling */
-    font-size: 1.2rem; /* Smaller subtext for additional information */
-    color: #64748b; /* Lighter color for subtext */
-    margin-top: 0.5rem; /* Space between title and subtext */
-  }
+  font-size: 2.5rem;
+  /* Keep original size for visibility */
+  font-weight: 600;
+  color: #1e293b;
+  /* Dark color for contrast */
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  /* Uppercase for a bold look */
+  letter-spacing: 1px;
+  /* Spacing between letters */
+  position: relative;
+  /* Positioning for effects */
+}
+
+.product-list h3::after {
+  content: "";
+  /* Adding a decorative line below the headline */
+  display: block;
+  width: 50%;
+  /* Width of the line */
+  height: 4px;
+  /* Height of the line */
+  background-color: #007bff;
+  /* Accent color */
+  margin: 0.5rem auto;
+  /* Centering the line */
+  border-radius: 2px;
+  /* Rounded corners */
+  transition: width 0.3s ease;
+  /* Smooth transition for hover */
+}
+
+.product-list h3:hover::after {
+  width: 70%;
+  /* Expand line on hover */
+}
+
+.product-list h3 span {
+  display: block;
+  /* Optional: Wrap in span for individual styling */
+  font-size: 1.2rem;
+  /* Smaller subtext for additional information */
+  color: #64748b;
+  /* Lighter color for subtext */
+  margin-top: 0.5rem;
+  /* Space between title and subtext */
+}

@@ -1,24 +1,36 @@
 .loader-overlay {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    position: fixed; /* Fixed position for full-screen overlay */
-    top: 0; /* Align to top */
-    left: 0; /* Align to left */
-    right: 0; /* Stretch to right */
-    bottom: 0; /* Stretch to bottom */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1000; /* Ensure it's on top of other elements */
-  }
-  .password-input-container {
-    position: relative;
-  }
-  .password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+  display: flex;
+  /* Use flexbox for centering */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  position: fixed;
+  /* Fixed position for full-screen overlay */
+  top: 0;
+  /* Align to top */
+  left: 0;
+  /* Align to left */
+  right: 0;
+  /* Stretch to right */
+  bottom: 0;
+  /* Stretch to bottom */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  z-index: 1000;
+  /* Ensure it's on top of other elements */
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}

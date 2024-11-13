@@ -9,9 +9,11 @@
 }
 
 .navbar-logo {
-  width: 40px; /* Adjusted logo size */
+  width: 40px;
+  /* Adjusted logo size */
   height: auto;
-  opacity: 0.8; /* Make logo slightly transparent */
+  opacity: 0.8;
+  /* Make logo slightly transparent */
   transition: opacity 0.1s ease;
 }
 

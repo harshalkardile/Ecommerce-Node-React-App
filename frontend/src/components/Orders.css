@@ -1,7 +1,8 @@
 .loader-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* or center */
+  align-items: flex-start;
+  /* or center */
   min-height: 50px;
   padding-top: 20px;
 }
@@ -57,7 +58,8 @@
 }
 
 .info-item-value {
-  font-weight: 300; /* Thinner font for data values */
+  font-weight: 300;
+  /* Thinner font for data values */
 }
 
 .total-price {
@@ -128,7 +130,8 @@
 .item-data {
   padding: 4px;
   text-align: left;
-  font-weight: 300; /* Thinner font for item data */
+  font-weight: 300;
+  /* Thinner font for item data */
 }
 
 .item-desc {
@@ -145,6 +148,7 @@
 }
 
 @media (max-width: 768px) {
+
   .items-header,
   .item-details {
     grid-template-columns: 1fr 1fr;

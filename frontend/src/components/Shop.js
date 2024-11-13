@@ -34,22 +34,22 @@ const ProductList = () => {
     const key = event.target.value;
     setSearchQuery(key);
     setIsLoading(true);
-    
+
     try {
       if (key) {
         let result = await fetch(`${baseurl}/search/${key}`);
         result = await result.json();
         if (result) {
-          const filteredResults = selectedCategory === "all" 
-            ? result 
+          const filteredResults = selectedCategory === "all"
+            ? result
             : result.filter(item => item.category === selectedCategory);
           setProducts(filteredResults);
         }
       } else {
         let allProducts = await fetch(`${baseurl}/products`);
         allProducts = await allProducts.json();
-        const filteredProducts = selectedCategory === "all" 
-          ? allProducts 
+        const filteredProducts = selectedCategory === "all"
+          ? allProducts
           : allProducts.filter(item => item.category === selectedCategory);
         setProducts(filteredProducts);
       }
@@ -68,15 +68,15 @@ const ProductList = () => {
       if (searchQuery) {
         let searchResults = await fetch(`${baseurl}/search/${searchQuery}`);
         searchResults = await searchResults.json();
-        const filteredResults = value === "all" 
-          ? searchResults 
+        const filteredResults = value === "all"
+          ? searchResults
           : searchResults.filter(item => item.category === value);
         setProducts(filteredResults);
       } else {
         let allProducts = await fetch(`${baseurl}/products`);
         allProducts = await allProducts.json();
-        const filteredProducts = value === "all" 
-          ? allProducts 
+        const filteredProducts = value === "all"
+          ? allProducts
           : allProducts.filter(item => item.category === value);
         setProducts(filteredProducts);
       }
@@ -92,7 +92,7 @@ const ProductList = () => {
         Products
         <span>Your one-stop shop for everything!</span> {/* Optional subtext */}
       </h3>
-      
+
       <div className="search-filter-container">
         <div className="search-container">
           <div className="search-box-wrapper">
@@ -104,8 +104,8 @@ const ProductList = () => {
             />
             <Search className="search-icon" size={20} />
           </div>
-          
-          <select 
+
+          <select
             className="category-select"
             value={selectedCategory}
             onChange={handleCategoryChange}
@@ -122,8 +122,8 @@ const ProductList = () => {
 
       {isLoading ? (
         <div className="loader-overlay">
-        <ClipLoader color={"#123abc"} loading={isLoading} size={50} />
-      </div>
+          <ClipLoader color={"#123abc"} loading={isLoading} size={50} />
+        </div>
       ) : (
         <div className="cards-container">
           {products && products.length > 0 ? (

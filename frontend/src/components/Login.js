@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { baseurl } from "./baseURL";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import "./Login.css"; 
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
