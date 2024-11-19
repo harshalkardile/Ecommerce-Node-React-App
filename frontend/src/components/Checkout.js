@@ -273,7 +273,6 @@ const Checkout = () => {
                     />
                   </div>
                   <div className="cart-item-actions">
-                    <p>Quantity: {item.quantity}</p>
                     <button
                       onClick={() => handleRemove(item.id)}  // Use item ID to remove
                       className="remove-button"

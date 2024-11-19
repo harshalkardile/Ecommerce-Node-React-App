@@ -9,33 +9,21 @@ function ProductCard({ id, name, desc, stock, price, category, image }) {
 
   const addToBasket = () => {
     if (stock > 0) {
-      // Check if item already exists in the basket
-      const existingItemIndex = basket.findIndex(item => item.id === id);
-
-      if (existingItemIndex >= 0) {
-        // If it exists, update quantity (increase by 1)
-        dispatch({
-          type: "UPDATE_QUANTITY",
-          itemId: id,  // The ID of the item to update
-          quantity: 1, // Increase the quantity by 1
-        });
-      } else {
-        // Otherwise, add the new item to the basket
-        dispatch({
-          type: "ADD_TO_BASKET",
-          item: {
-            id: id,
-            name: name,
-            desc: desc,
-            price: price,
-            category: category,
-            quantity: 1,  // Add item with quantity 1 initially
-          },
-        });
-      }
-
+      // Always add a new item to the basket, even if it's the same product
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: {
+          id: `${id}_${Date.now()}`, // Generate a unique ID each time
+          name: name,
+          desc: desc,
+          price: price,
+          category: category,
+          quantity: 1,
+        },
+      });
+  
       setAddedToCart(true);
-
+  
       // Revert the button state after 0.5 seconds
       setTimeout(() => {
         setAddedToCart(false);

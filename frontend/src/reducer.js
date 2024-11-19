@@ -22,25 +22,12 @@ const reducer = (state, action) => {
         basket: [] // Clears the basket
       };
 
-    case "ADD_TO_BASKET":
-      // Check if item already exists in the basket
-      const existingItemIndex = state.basket.findIndex(item => item.id === action.item.id);
-
-      if (existingItemIndex >= 0) {
-        // If item exists, increase the quantity
-        const newBasket = [...state.basket];
-        newBasket[existingItemIndex].quantity += 1;
+      case "ADD_TO_BASKET":
         return {
           ...state,
-          basket: newBasket,
+          basket: [...state.basket, action.item]
         };
-      } else {
-        // If item doesn't exist, add a new item with quantity 1
-        return {
-          ...state,
-          basket: [...state.basket, { ...action.item, quantity: 1 }],
-        };
-      }
+  
 
     case "REMOVE_FROM_BASKET":
       // Remove item completely by matching the ID
